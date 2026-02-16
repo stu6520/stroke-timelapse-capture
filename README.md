@@ -1,4 +1,5 @@
-Tested on Python 3.11
+Tested on ![Python](https://img.shields.io/badge/python-3.11-blue)
+
 
 ## Setup
 
@@ -70,6 +71,7 @@ Python versions:
 - ❌ 3.13 currently unsupported due to pynput limitations
 
 If you experience crashes or listener errors, install Python 3.11 and run the script using that version.
+
 
 
 
