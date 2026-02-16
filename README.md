@@ -58,3 +58,6 @@ Python versions:
 If you experience crashes or listener errors, install Python 3.11 and run the script using that version.
 
 
+![Preview](demo/preview.png)
+![Demo](demo/demo.gif)
+
