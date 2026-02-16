@@ -1,3 +1,16 @@
+## Setup (Important)
+
+This script requires Python 3.11 for full compatibility.
+
+Check your version:
+python --version
+
+If not 3.11, run using:
+py -3.11 stroke-timelapse-capture.py
+
+Install dependencies:
+py -3.11 -m pip install -r requirements.txt
+
 Tested on Python 3.11
 # Stroke-Based Timelapse Capture
 
@@ -48,3 +61,4 @@ If you experience crashes or listener errors, install Python 3.11 and run the sc
 Or install via:
 
 pip install -r requirements.txt
+
