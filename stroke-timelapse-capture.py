@@ -5,9 +5,9 @@ import os
 import time
 import sys
 
-APP = "RETAS STUDIO"    
+APP = "RETAS STUDIO"    # Drawing program
 TRIGGER = 2     # Take a screenshot every 2 strokes
-SAVE = r"C:\stroke-timelapse-capture" # Screenshots' directory, auto-create if not already existed
+SAVE = r"output/" # Screenshots' directory, auto-create if not already existed
 JPG_QUALITY = 35
 SCALE = 0.5   # 0.5 = Screenshots at 50% size
 
@@ -113,3 +113,4 @@ mouse_listener.stop()
 
 print("Exited.")
 sys.exit()
+
