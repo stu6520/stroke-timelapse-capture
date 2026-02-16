@@ -54,7 +54,7 @@ Tested use case environments include:
 
 ## jpg_to_mp4.exe
 
-Screenshots can later be combined into a video using any external image-to-video converter tool of your choice.
+Screenshots can later be combined into a video using this tool.
 Available here:
 [https://github.com/stu6520/repo/releases](https://github.com/stu6520/stroke-timelapse-capture/releases)
 
@@ -78,6 +78,7 @@ Python versions:
 - ❌ 3.13 currently unsupported due to pynput limitations
 
 If you experience crashes or listener errors, install Python 3.11 and run the script using that version.
+
 
 
 
