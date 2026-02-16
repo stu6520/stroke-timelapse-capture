@@ -1,3 +1,4 @@
+Tested on Python 3.11
 ## Setup (Important)
 
 This script requires Python 3.11 for full compatibility.
@@ -11,7 +12,7 @@ py -3.11 stroke-timelapse-capture.py
 Install dependencies:
 py -3.11 -m pip install -r requirements.txt
 
-Tested on Python 3.11
+
 # Stroke-Based Timelapse Capture
 
 A lightweight Python script that automatically captures screenshots and saves them as sequentially numbered JPG images.
@@ -56,9 +57,4 @@ Python versions:
 
 If you experience crashes or listener errors, install Python 3.11 and run the script using that version.
 
-
-```markdown
-Or install via:
-
-pip install -r requirements.txt
 
