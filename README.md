@@ -20,10 +20,13 @@ A lightweight Python script that automatically captures screenshots and saves th
 This tool is especially friendly for illustrators who want to create timelapse recordings of their work without recording idle time. It captures frames efficiently with small file sizes (around 60–70 KB each), making it suitable for long-hour drawing sessions.
 
 Tested use case environments include:
-- Wacom Mobile Studio Pro 13 Gen 1 by :contentReference[oaicite:0]{index=0}
+- Wacom Mobile Studio Pro 13 Gen 1
 - RETAS Studio Stylos
 
-Screenshots can later be combined into a video using any external image-to-video converter tool of your choice.
+
+![Preview](demo/preview.png)
+![Demo](demo/demo.gif)
+
 
 
 ---
@@ -57,7 +60,4 @@ Python versions:
 
 If you experience crashes or listener errors, install Python 3.11 and run the script using that version.
 
-
-![Preview](demo/preview.png)
-![Demo](demo/demo.gif)
 
