@@ -13,7 +13,7 @@ try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
 
     # === ask folder ===
-    user_input = input("Enter folder path OR folder name(Default output/: ").strip()
+    user_input = input("Enter folder path OR folder name(Default output/): ").strip()
     if not user_input:
         raise Exception("Input cannot be empty")
 
@@ -86,5 +86,6 @@ except Exception as e:
     print("\nERROR:", e)
     print(traceback.format_exc())
     input("Press Enter to exit...")
+
 
 
