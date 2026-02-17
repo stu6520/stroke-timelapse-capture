@@ -52,11 +52,20 @@ Tested use case environments include:
 - Sequential filenames:
   Rec_000000.jpg → Rec_000001.jpg
 
-## jpg_to_mp4.exe
+## jpg_to_mp4.py
 
 Screenshots can later be combined into a video using this tool.
-Available here:
-[https://github.com/stu6520/repo/releases](https://github.com/stu6520/stroke-timelapse-capture/releases)
+Install dependencies:
+
+```bash
+pip install opencv-python
+```
+
+Run:
+
+```bash
+python jpg_to_mp4.py
+```
 
 
 ---
@@ -78,6 +87,7 @@ Python versions:
 - ❌ 3.13 currently unsupported due to pynput limitations
 
 If you experience crashes or listener errors, install Python 3.11 and run the script using that version.
+
 
 
 
