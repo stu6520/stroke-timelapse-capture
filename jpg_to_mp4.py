@@ -22,8 +22,8 @@ try:
         input_folder = user_input
         video_name = os.path.basename(os.path.normpath(user_input))
     else:
-        # relative name → assume inside Retas Recordings/
-        input_folder = os.path.join(base_dir, "Retas Recordings", user_input)
+        # relative name → assume inside output/
+        input_folder = os.path.join(base_dir, "output", user_input)
         video_name = user_input
 
     output_video = os.path.join(base_dir, f"{video_name}.mp4")
@@ -86,3 +86,4 @@ except Exception as e:
     print("\nERROR:", e)
     print(traceback.format_exc())
     input("Press Enter to exit...")
+
