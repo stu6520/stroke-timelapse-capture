@@ -2,3 +2,4 @@ pynput
 pyautogui
 pillow
 pygetwindow
+opencv-python
