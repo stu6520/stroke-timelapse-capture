@@ -5,23 +5,41 @@ import os
 import time
 import sys
 
-APP = "RETAS STUDIO"    # Drawing program
-TRIGGER = 2     # Take a screenshot every 2 strokes
-SAVE = r"output/" # Screenshots' directory, auto-create if not already existed
+APP = "RETAS STUDIO"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_SAVE = os.path.join(SCRIPT_DIR, "output")
+TRIGGER = 2
 JPG_QUALITY = 35
-SCALE = 0.5   # 0.5 = Screenshots at 50% size
+SCALE = 0.5
 
+# ---------- PROJECT NAME ----------
+project = input("Enter project name: ").strip()
+if not project:
+    print("Project name required.")
+    sys.exit()
 
+SAVE = os.path.join(BASE_SAVE, project)
 os.makedirs(SAVE, exist_ok=True)
 
+# ---------- FIND NEXT INDEX ----------
+existing = [f for f in os.listdir(SAVE) if f.endswith(".jpg")]
+if existing:
+    nums = [int(f.split("_")[1].split(".")[0]) for f in existing if "_" in f]
+    idx = max(nums) + 1 if nums else 0
+else:
+    idx = 0
+
+print("Saving to:", SAVE)
+print("Starting index:", idx)
+
+# ---------- STATE ----------
 count = 0
-idx = 0
 press_time = 0
 running = True
 paused = False
-auto_paused = False
 
 
+# ---------- WINDOW ----------
 def get_window():
     w = gw.getActiveWindow()
     if w and APP.lower() in w.title.lower():
@@ -29,40 +47,26 @@ def get_window():
     return None
 
 
-def check_auto_pause():
-    global auto_paused, paused
-    w = get_window()
-
-    if w is None or w.isMinimized:
-        if not auto_paused:
-            auto_paused = True
-            paused = True
-            print("Auto-paused (window inactive/minimized)")
-    else:
-        if auto_paused:
-            auto_paused = False
-            paused = False
-            print("Auto-resumed")
-
-
+# ---------- SCREENSHOT ----------
 def save_jpg(path):
-    img = pyautogui.screenshot()
-    w, h = img.size
-    img = img.resize((int(w*SCALE), int(h*SCALE)))
+    w = get_window()
+    if not w:
+        return
 
-    img.save(path, "JPEG", quality=30, subsampling=2)
+    bbox = (w.left, w.top, w.right, w.bottom)
+    img = pyautogui.screenshot(region=bbox)
+
+    w0, h0 = img.size
+    img = img.resize((int(w0 * SCALE), int(h0 * SCALE)))
+
+    img.save(path, "JPEG", quality=JPG_QUALITY, optimize=True, progressive=True)
 
 
-
+# ---------- MOUSE ----------
 def on_click(x, y, button, pressed):
     global count, idx, press_time
 
-    if not running:
-        return False
-
-    check_auto_pause()
-
-    if paused:
+    if not running or paused:
         return
 
     if button != mouse.Button.left:
@@ -84,20 +88,20 @@ def on_click(x, y, button, pressed):
                 count = 0
 
 
+# ---------- KEYBOARD ----------
 def on_press(key):
-    global running, paused, auto_paused
+    global running, paused
 
     if key == keyboard.Key.esc:
-        print("Exiting...")
         running = False
         return False
 
-    if key == keyboard.Key.f8:
-        if not auto_paused:
-            paused = not paused
-            print("Paused" if paused else "Resumed")
+    elif key == keyboard.Key.f8:
+        paused = not paused
+        print("Paused" if paused else "Resumed")
 
 
+# ---------- RUN ----------
 print("Running")
 print("F8 = Pause/Resume")
 print("ESC = Exit")
@@ -112,5 +116,3 @@ keyboard_listener.join()
 mouse_listener.stop()
 
 print("Exited.")
-sys.exit()
-
